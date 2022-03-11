@@ -1,0 +1,690 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 5,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 15,
+      "title": "Relative load by API",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "Measures how long an AO operation (create, find, delete, deleteWithSQL, get, stream, count) that uses the Entity Manager takes.\n\nThe operation query might be long running, or the database is under load. Contact the vendor responsible and investigate if long running queries are expected.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 5000
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(sum without (instance, entityType) (sum without (name) (com_atlassian_confluence_metrics_Mean{category00=\"db\", category01=\"ao\", category02=\"entityManager\"}) * sum without (name) (com_atlassian_confluence_metrics_Count{category00=\"db\", category01=\"ao\", category02=\"entityManager\"}))/10000)",
+          "interval": "",
+          "legendFormat": "{{tag_invokerPluginKey}}",
+          "refId": "A"
+        }
+      ],
+      "title": "load using AO's EntityManager (mean - cluster wide)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "Measures how long an AO operation (create, find, delete, deleteWithSQL, get, stream, count) that uses the Entity Manager takes.\n\nThe operation query might be long running, or the database is under load. Contact the vendor responsible and investigate if long running queries are expected.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 5000
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(sum without (name,entityType) (com_atlassian_confluence_metrics_99thPercentile{category00=\"db\", category01=\"ao\", category02=\"entityManager\"}))/1000",
+          "interval": "",
+          "legendFormat": "{{tag_invokerPluginKey}}",
+          "refId": "A"
+        }
+      ],
+      "title": "load using AO's EntityManager (p99 - per node)",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 13,
+      "panels": [],
+      "title": "AO's executeInTransaction",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "Measures how long an AO transaction takes, when executed inside the TransactionCallBack. This is mainly used by Confluence plugins.\n\nThe transaction can have many AO operations, it can be either there are too many operations or the query is long running, or the database is under load. Contact the vendor responsible and investigate if long running queries are expected.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 3,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum without (instance, tag_taskName, tag_invokerPluginKey) (com_atlassian_confluence_metrics_Value{category00=\"db\",category01=\"ao\",name=\"executeInTransaction\",tag_statistic=\"active\",tag_taskName!=\"undefined\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "number of running queries using AO's execute in transaction",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "description": "Measures how long an AO transaction takes, when executed inside the TransactionCallBack. This is mainly used by Confluence plugins.\n\nThe transaction can have many AO operations, it can be either there are too many operations or the query is long running, or the database is under load. Contact the vendor responsible and investigate if long running queries are expected.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.2",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum without (instance) (com_atlassian_confluence_metrics_Value{category00=\"db\",category01=\"ao\",name=\"executeInTransaction\",tag_statistic=\"active\",tag_taskName!=\"undefined\"})",
+          "interval": "",
+          "legendFormat": "{{ tag_invokerPluginKey }} - {{tag_taskName}} (task)",
+          "refId": "A"
+        }
+      ],
+      "title": "queries running using AO's execute in transaction (cluster wide)",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 17,
+      "panels": [],
+      "title": "SAL's executeInTransaction",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "Measures how long an SAL transaction takes, when executed inside the DefaultTransactionalExecutor.\n\nThe transaction can have many SAL operations, it can be either there are too many operations or the query is long running, or the database is under load. Contact the vendor responsible and investigate if long running queries are expected.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "id": 18,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum without (instance, tag_taskName, tag_invokerPluginKey) (com_atlassian_confluence_metrics_Value{category00=\"db\",category01=\"sal\",name=\"transactionalExecutor\", tag_statistic=\"active\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "number of running queries using SAL's execute in transaction",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "description": "Measures how long an SAL transaction takes, when executed inside the DefaultTransactionalExecutor.\n\nThe transaction can have many SAL operations, it can be either there are too many operations or the query is long running, or the database is under load. Contact the vendor responsible and investigate if long running queries are expected.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.2",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum without (instance) (com_atlassian_confluence_metrics_Value{category00=\"db\",category01=\"sal\",name=\"transactionalExecutor\",tag_statistic=\"active\"})",
+          "interval": "",
+          "legendFormat": "{{ tag_invokerPluginKey }} - {{tag_taskName}} (task)",
+          "refId": "A"
+        }
+      ],
+      "title": "queries running using SAL's execute in transaction",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 11,
+      "panels": [],
+      "title": "AO upgrade tasks",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "description": "Measures how long an App is taking to upgrade a part of the data that it stores in the database.\n\nUpgrade tasks happen when an App is both updated and enabled, during this time the App’s functionality will probably be unavailable, and it may temporarily increase load on the database and the node the upgrade task is running on.\n\nIf an App stores a lot of data in database then this may take a while to run, if possible, try to schedule upgrading Apps with large amounts of data in off-peak hours.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 28
+      },
+      "id": 7,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum without (instance, tag_fromPluginKey, tag_taskName) (com_atlassian_confluence_metrics_Value{category00=\"db\", category01=\"ao\", name=\"upgradetask\", tag_statistic=\"active\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Number of running AO upgrade tasks",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "description": "Measures how long an App is taking to upgrade a part of the data that it stores in the database.\n\nUpgrade tasks happen when an App is both updated and enabled, during this time the App’s functionality will probably be unavailable, and it may temporarily increase load on the database and the node the upgrade task is running on.\n\nIf an App stores a lot of data in database then this may take a while to run, if possible, try to schedule upgrading Apps with large amounts of data in off-peak hours.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 28
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.2",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum without (instance) (com_atlassian_confluence_metrics_Value{category00=\"db\", category01=\"ao\", name=\"upgradetask\", tag_statistic=\"active\"})",
+          "interval": "",
+          "legendFormat": "{{ tag_fromPluginKey }} - {{tag_taskName}} (task)",
+          "refId": "A"
+        }
+      ],
+      "title": "running AO upgrade tasks",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 32,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Database load",
+  "uid": "qqVaZU5nz",
+  "version": 14
+}
