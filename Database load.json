@@ -578,7 +578,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum without (instance, tag_fromPluginKey, tag_taskName) (com_atlassian_confluence_metrics_Value{category00=\"db\", category01=\"ao\", name=\"upgradetask\", tag_statistic=\"active\"})",
+          "expr": "sum without (instance, tag_fromPluginKey, tag_taskName) (com_atlassian_confluence_metrics_Value{category00=\"db\", category01=\"ao\", name=\"upgradeTask\", tag_statistic=\"active\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -661,7 +661,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum without (instance) (com_atlassian_confluence_metrics_Value{category00=\"db\", category01=\"ao\", name=\"upgradetask\", tag_statistic=\"active\"})",
+          "expr": "sum without (instance) (com_atlassian_confluence_metrics_Value{category00=\"db\", category01=\"ao\", name=\"upgradeTask\", tag_statistic=\"active\"})",
           "interval": "",
           "legendFormat": "{{ tag_fromPluginKey }} - {{tag_taskName}} (task)",
           "refId": "A"
