@@ -466,7 +466,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "increase(java_lang_G1_Old_Generation_CollectionTime[10m])",
+          "expr": "increase(java_lang_G1_Old_Generation_CollectionTime{product=\"confluence\"}[10m])",
           "format": "time_series",
           "hide": false,
           "interval": "60s",
@@ -479,7 +479,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "increase(java_lang_G1_Young_Generation_CollectionTime[10m])",
+          "expr": "increase(java_lang_G1_Young_Generation_CollectionTime{product=\"confluence\"}[10m])",
           "hide": false,
           "interval": "",
           "legendFormat": "",
@@ -844,7 +844,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "increase(java_lang_G1_Old_Generation_CollectionCount[10m])",
+          "expr": "increase(java_lang_G1_Old_Generation_CollectionCount{product=\"confluence\"}[10m])",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
@@ -857,7 +857,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "increase(java_lang_G1_Young_Generation_CollectionCount[10m])",
+          "expr": "increase(java_lang_G1_Young_Generation_CollectionCount{product=\"confluence\"}[10m])",
           "hide": false,
           "interval": "",
           "legendFormat": "",
