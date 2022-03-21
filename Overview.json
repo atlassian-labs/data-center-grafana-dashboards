@@ -20,33 +20,18 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 26,
   "links": [],
   "liveNow": false,
   "panels": [
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "mappings": [
-            {
-              "options": {
-                "0": {
-                  "index": 2,
-                  "text": "DOWN"
-                },
-                "1": {
-                  "index": 1,
-                  "text": "UP"
-                }
-              },
-              "type": "value"
-            },
             {
               "options": {
                 "match": "null",
@@ -56,6 +41,17 @@
                 }
               },
               "type": "special"
+            },
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "index": 1,
+                  "text": "UP"
+                },
+                "to": 9999999
+              },
+              "type": "range"
             }
           ],
           "thresholds": {
@@ -101,13 +97,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "up{instance=\"localhost:9000\"}",
+          "expr": "java_lang_Runtime_Pid{product=\"confluence\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -115,7 +115,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -173,13 +172,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "time() - process_start_time_seconds{instance=\"localhost:9000\"}",
+          "expr": "java_lang_Runtime_Uptime{product=\"confluence\"}/1000",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -187,7 +190,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -245,13 +247,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "java_lang_Runtime_StartTime{instance=\"localhost:9000\"}",
+          "expr": "java_lang_Runtime_StartTime{product=\"confluence\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -259,7 +265,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -317,13 +322,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "java_lang_OperatingSystem_AvailableProcessors{instance=\"localhost:9000\"}",
+          "expr": "java_lang_OperatingSystem_AvailableProcessors{product=\"confluence\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -331,7 +340,6 @@
       "type": "stat"
     },
     {
-      "datasource": null,
       "gridPos": {
         "h": 11,
         "w": 3,
@@ -340,17 +348,24 @@
       },
       "id": 28,
       "options": {
+        "alertInstanceLabelFilter": "",
         "alertName": "",
         "dashboardAlerts": true,
         "dashboardTitle": "",
-        "folderId": null,
+        "groupBy": [],
+        "groupMode": "default",
         "maxItems": 10,
         "showOptions": "changes",
         "sortOrder": 5,
         "stateFilter": {
           "alerting": false,
+          "error": true,
           "execution_error": false,
+          "firing": true,
+          "inactive": false,
+          "noData": false,
           "no_data": false,
+          "normal": false,
           "ok": false,
           "paused": false,
           "pending": false
@@ -371,7 +386,6 @@
       "type": "alertlist"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -441,18 +455,35 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "increase(jvm_gc_collection_seconds_sum{instance=\"localhost:9000\"}[1m])",
+          "expr": "increase(java_lang_G1_Old_Generation_CollectionTime{product=\"confluence\"}[10m])",
           "format": "time_series",
           "hide": false,
           "interval": "60s",
-          "legendFormat": "{{gc}}",
+          "legendFormat": "{{gc}} ({{instance}})",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "increase(java_lang_G1_Young_Generation_CollectionTime{product=\"confluence\"}[10m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
       "title": "GC Time",
@@ -499,7 +530,6 @@
           }
         ]
       },
-      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -570,15 +600,20 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "(java_lang_OperatingSystem_ProcessCpuLoad * 1000)",
+          "expr": "(java_lang_OperatingSystem_ProcessCpuLoad{product=\"confluence\"} * 100)",
           "interval": "",
-          "legendFormat": "cpu load",
+          "legendFormat": "cpu load ({{instance}})",
           "refId": "A"
         }
       ],
@@ -634,7 +669,6 @@
           }
         ]
       },
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -704,15 +738,20 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "100*(jvm_memory_bytes_used{area=\"heap\"}/jvm_memory_bytes_max{area=\"heap\"})",
+          "expr": "100*(jvm_memory_bytes_used{area=\"heap\",product=\"confluence\"}/jvm_memory_bytes_max{area=\"heap\",product=\"confluence\"})",
           "interval": "",
-          "legendFormat": "Used {{ area }}",
+          "legendFormat": "Used {{ area }} ({{instance}})",
           "refId": "A"
         }
       ],
@@ -728,7 +767,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -795,25 +833,41 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "increase(jvm_gc_collection_seconds_count{instance=\"localhost:9000\"}[1m])",
+          "expr": "increase(java_lang_G1_Old_Generation_CollectionCount{product=\"confluence\"}[10m])",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
-          "legendFormat": "{{gc}}",
+          "legendFormat": "{{gc}} ({{instance}})",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "increase(java_lang_G1_Young_Generation_CollectionCount{product=\"confluence\"}[10m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
       "title": "GC Count",
       "type": "timeseries"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -868,14 +922,18 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "jvm_threads_state{state=\"BLOCKED\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{ state }}",
+          "legendFormat": "{{ state }} ({{instance}})",
           "refId": "D"
         }
       ],
@@ -884,7 +942,6 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -897,7 +954,6 @@
       "type": "row"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -963,24 +1019,33 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "increase(Catalina_GlobalRequestProcessor_requestCount{instance=\"localhost:9000\"}[1m])",
+          "expr": "increase(Standalone_GlobalRequestProcessor_requestCount[10m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{name}} count",
+          "legendFormat": "{{name}} count ({{instance}})",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "increase(Catalina_GlobalRequestProcessor_errorCount{instance=\"localhost:9000\"}[1m])",
+          "expr": "increase(Standalone_GlobalRequestProcessor_errorCount[10m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{name}} error",
+          "legendFormat": "{{name}} error ({{instance}})",
           "refId": "B"
         }
       ],
@@ -1028,7 +1093,6 @@
           }
         ]
       },
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1098,16 +1162,21 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "( Catalina_ThreadPool_currentThreadCount / Catalina_ThreadPool_maxThreads) * 100",
+          "expr": "(Standalone_ThreadPool_currentThreadCount / Standalone_ThreadPool_maxThreads) * 100",
           "hide": false,
           "interval": "",
-          "legendFormat": "used",
+          "legendFormat": "used {{name}} ({{instance}})",
           "refId": "A"
         }
       ],
@@ -1123,7 +1192,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1189,16 +1257,21 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "increase(Catalina_GlobalRequestProcessor_processingTime{instance=\"localhost:9000\"}[1m]) / increase(Catalina_GlobalRequestProcessor_requestCount{instance=\"localhost:9000\"}[1m])",
+          "expr": "increase(Standalone_GlobalRequestProcessor_processingTime[10m]) / increase(Standalone_GlobalRequestProcessor_requestCount[10m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{name}}",
+          "legendFormat": "{{name}} ({{instance}})",
           "refId": "A"
         }
       ],
@@ -1206,7 +1279,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1263,32 +1335,7 @@
           },
           "unit": "none"
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "active sessions: /confluence"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 11,
@@ -1304,25 +1351,34 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.2.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "Catalina_Manager_activeSessions{instance=\"localhost:9000\",context=\"/confluence\"}",
+          "expr": "Standalone_Manager_activeSessions",
           "hide": false,
           "interval": "",
-          "legendFormat": "active sessions: {{context}}",
+          "legendFormat": "active sessions: {{context}} ({{instance}})",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "Catalina_Manager_rejectedSessions{instance=\"localhost:9000\",context=\"/confluence\"}",
+          "expr": "Standalone_Manager_rejectedSessions",
           "hide": false,
           "interval": "",
-          "legendFormat": "rejected sessions: {{context}}",
+          "legendFormat": "rejected sessions: {{context}} ({{instance}})",
           "refId": "C"
         }
       ],
@@ -1331,7 +1387,6 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1384,7 +1439,6 @@
           }
         ]
       },
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1450,15 +1504,20 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "(Catalina_DataSource_NumActive{instance=\"localhost:9000\",context=\"/confluence\"} / Catalina_DataSource_MaxTotal{instance=\"localhost:9000\",context=\"/confluence\"}) * 100",
+          "expr": "(com_mchange_v2_c3p0_PooledDataSource_numBusyConnections / com_mchange_v2_c3p0_PooledDataSource_maxPoolSize) * 100",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -1474,7 +1533,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1540,23 +1598,32 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "Catalina_DataSource_NumActive{instance=\"localhost:9000\",context=\"/confluence\"}",
+          "expr": "com_mchange_v2_c3p0_PooledDataSource_numBusyConnections",
           "interval": "",
-          "legendFormat": "active",
+          "legendFormat": "active {{instance}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "Catalina_DataSource_NumIdle{instance=\"localhost:9000\",context=\"/confluence\"}",
+          "expr": "com_mchange_v2_c3p0_PooledDataSource_numIdleConnections",
           "hide": false,
           "interval": "",
-          "legendFormat": "idle",
+          "legendFormat": "idle {{instance}}",
           "refId": "B"
         }
       ],
@@ -1564,7 +1631,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1630,23 +1696,32 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "rate(com_atlassian_confluence_db_reads_invocation_count[1m])",
+          "expr": "rate(com_atlassian_confluence_metrics_Count{category00=\"postgres\",name=\"reads\"}[10m])",
           "interval": "",
-          "legendFormat": "reads",
+          "legendFormat": "reads ({{instance}})",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
-          "expr": "rate(com_atlassian_confluence_db_writes_invocation_count[1m])",
+          "expr": "rate(com_atlassian_confluence_metrics_Count{category00=\"postgres\",name=\"writes\"}[10m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "writes",
+          "legendFormat": "writes ({{instance}})",
           "refId": "B"
         }
       ],
@@ -1654,8 +1729,8 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "10s",
-  "schemaVersion": 32,
+  "refresh": "",
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1668,6 +1743,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Overview",
-  "uid": "IeEDnNp7z",
-  "version": 7
+  "uid": "IeEDnNp7x",
+  "version": 22,
+  "weekStart": ""
 }
