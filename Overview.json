@@ -105,7 +105,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "java_lang_Runtime_Pid{instance=\"10.226.29.177:8099\"}",
+          "expr": "java_lang_Runtime_Pid{product=\"confluence\"}",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
@@ -180,7 +180,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "java_lang_Runtime_Uptime{instance=\"10.226.29.177:8099\"}/1000",
+          "expr": "java_lang_Runtime_Uptime{product=\"confluence\"}/1000",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
@@ -255,7 +255,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "java_lang_Runtime_StartTime{instance=\"10.226.29.177:8099\"}",
+          "expr": "java_lang_Runtime_StartTime{product=\"confluence\"}",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
@@ -330,7 +330,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "java_lang_OperatingSystem_AvailableProcessors{instance=\"10.226.29.177:8099\"}",
+          "expr": "java_lang_OperatingSystem_AvailableProcessors{product=\"confluence\"}",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
@@ -466,12 +466,24 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "increase(jvm_gc_collection_seconds_sum{instance=\"10.226.29.177:8099\"}[10m])",
+          "expr": "increase(java_lang_G1_Old_Generation_CollectionTime[10m])",
           "format": "time_series",
           "hide": false,
           "interval": "60s",
           "legendFormat": "{{gc}} ({{instance}})",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "increase(java_lang_G1_Young_Generation_CollectionTime[10m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
       "title": "GC Time",
@@ -599,7 +611,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "(java_lang_OperatingSystem_ProcessCpuLoad{instance=\"10.226.29.177:8099\"} * 100)",
+          "expr": "(java_lang_OperatingSystem_ProcessCpuLoad{product=\"confluence\"} * 100)",
           "interval": "",
           "legendFormat": "cpu load ({{instance}})",
           "refId": "A"
@@ -737,7 +749,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "100*(jvm_memory_bytes_used{area=\"heap\",instance=\"10.226.29.177:8099\"}/jvm_memory_bytes_max{area=\"heap\",instance=\"10.226.29.177:8099\"})",
+          "expr": "100*(jvm_memory_bytes_used{area=\"heap\",product=\"confluence\"}/jvm_memory_bytes_max{area=\"heap\",product=\"confluence\"})",
           "interval": "",
           "legendFormat": "Used {{ area }} ({{instance}})",
           "refId": "A"
@@ -832,12 +844,24 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "increase(jvm_gc_collection_seconds_count{instance=\"10.226.29.177:8099\"}[10m])",
+          "expr": "increase(java_lang_G1_Old_Generation_CollectionCount[10m])",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
           "legendFormat": "{{gc}} ({{instance}})",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "increase(java_lang_G1_Young_Generation_CollectionCount[10m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
       "title": "GC Count",
@@ -906,7 +930,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "jvm_threads_state{state=\"BLOCKED\",instance=\"10.226.29.177:8099\"}",
+          "expr": "jvm_threads_state{state=\"BLOCKED\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "{{ state }} ({{instance}})",
