@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -20,15 +23,17 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
-  "id": 6,
+  "id": 9,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -41,7 +46,10 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long web fragment condition will take to determine whether a web fragment should be displayed or not.\n\nWeb fragments conditions determine whether a link or a section on a page should be displayed. Slow web fragment conditions lead to slow page load times especially if they are not cached. Reach out to the app vendor responsible to flag and investigate. ",
       "fieldConfig": {
         "defaults": {
@@ -133,7 +141,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -145,11 +154,14 @@
           "refId": "A"
         }
       ],
-      "title": "web fragment condition evaluation time (mean - cluster wide)",
+      "title": "Web Fragment Condition Evaluation Time (mean - cluster wide)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long web fragment condition will take to determine whether a web fragment should be displayed or not.\n\nWeb fragments conditions determine whether a link or a section on a page should be displayed. Slow web fragment conditions lead to slow page load times especially if they are not cached. Reach out to the app vendor responsible to flag and investigate. ",
       "fieldConfig": {
         "defaults": {
@@ -216,7 +228,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -228,12 +241,15 @@
           "refId": "A"
         }
       ],
-      "title": "web fragment condition evaluation time (p99 - per node)",
+      "title": "Web Fragment Condition Evaluation Time (p99 - per node)",
       "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -246,7 +262,10 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long a Soy Template web panel is taking to render.\n\nThe template renderer might be long running. Contact the vendor responsible and investigate if long running queries are expected.",
       "fieldConfig": {
         "defaults": {
@@ -313,7 +332,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -326,11 +346,14 @@
           "refId": "A"
         }
       ],
-      "title": "soy web panel response time (mean - cluster wide)",
+      "title": "Soy Web Panel Response Time (mean - cluster wide)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long a Soy Template web panel is taking to render.\n\nThe template renderer might be long running. Contact the vendor responsible and investigate if long running queries are expected.",
       "fieldConfig": {
         "defaults": {
@@ -397,7 +420,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -409,11 +433,14 @@
           "refId": "A"
         }
       ],
-      "title": "soy web panel response time (p99 - per node) ",
+      "title": "Soy Web Panel Response Time (p99 - per node) ",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long an Atlassian Template web panel is taking to render.\n\nThe template renderer might be long running. Contact the vendor responsible and investigate if long running queries are expected.",
       "fieldConfig": {
         "defaults": {
@@ -480,7 +507,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -493,11 +521,14 @@
           "refId": "A"
         }
       ],
-      "title": "velocity web panel response time (mean - cluster wide)",
+      "title": "Velocity Web Panel Response Time (mean - cluster wide)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long an Atlassian Template web panel is taking to render.\n\nThe template renderer might be long running. Contact the vendor responsible and investigate if long running queries are expected.",
       "fieldConfig": {
         "defaults": {
@@ -564,7 +595,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -576,12 +608,15 @@
           "refId": "A"
         }
       ],
-      "title": "velocity web panel response time (p99 - per node) ",
+      "title": "Velocity Web Panel Response Time (p99 - per node) ",
       "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -594,7 +629,10 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long web resource condition will take to determine whether a resource should be displayed or not.\n\nSlow web resource conditions lead to slow page load times especially if they are not cached. Reach out to the app vendor responsible to flag and investigate. ",
       "fieldConfig": {
         "defaults": {
@@ -686,7 +724,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -698,11 +737,14 @@
           "refId": "A"
         }
       ],
-      "title": "web resource condition evaluation time (mean - cluster wide)",
+      "title": "Web Resource Condition Evaluation ktime (mean - cluster wide)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long web resource condition will take to determine whether a resource should be displayed or not.\n\nSlow web resource conditions lead to slow page load times especially if they are not cached. Reach out to the app vendor responsible to flag and investigate. ",
       "fieldConfig": {
         "defaults": {
@@ -769,7 +811,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -781,17 +824,20 @@
           "refId": "A"
         }
       ],
-      "title": "web resource condition evaluation time (p99 - per node)",
+      "title": "Web Resource Condition Evaluation Time (p99 - per node)",
       "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 48
+        "y": 39
       },
       "id": 21,
       "panels": [],
@@ -799,7 +845,10 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures HTTP requests of the REST APIs that uses the atlassian-rest module.\n\nCheck the frequency and duration of the rest requests. If excessive or very slow, consider reaching out to the app vendor and flag this issue to them.",
       "fieldConfig": {
         "defaults": {
@@ -839,8 +888,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -881,7 +929,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 49
+        "y": 40
       },
       "id": 22,
       "options": {
@@ -891,7 +939,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -903,11 +952,14 @@
           "refId": "A"
         }
       ],
-      "title": "http rest request time (mean - cluster wide)",
+      "title": "HTTP REST Request Time (mean - cluster wide)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures HTTP requests of the REST APIs that uses the atlassian-rest module.\n\nCheck the frequency and duration of the rest requests. If excessive or very slow, consider reaching out to the app vendor and flag this issue to the",
       "fieldConfig": {
         "defaults": {
@@ -947,8 +999,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -964,7 +1015,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 49
+        "y": 40
       },
       "id": 23,
       "options": {
@@ -974,7 +1025,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -986,12 +1038,12 @@
           "refId": "A"
         }
       ],
-      "title": "http rest request time (p99 - per node)",
+      "title": "HTTP REST Request Time (p99 - per node)",
       "type": "timeseries"
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 32,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1005,5 +1057,6 @@
   "timezone": "",
   "title": "Response times",
   "uid": "dA8tm85na",
-  "version": 5
+  "version": 3,
+  "weekStart": ""
 }

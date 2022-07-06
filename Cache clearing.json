@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -20,15 +23,17 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
     {
-      "datasource": null,
-      "description": "Indicates that all caches are being flushed by a plugin. This is an operation which should not be triggered by external plugins and can lead to product slowdowns\n\nDetermine who invoked this, then reach out to the app vendor and flag this issue to them. ",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
+      "description": "Indicates that all caches are being flushed by a plugin. This is an operation which should not be triggered by external plugins and can lead to product slowdowns\n\n \n\nDetermine who invoked this, this can be determined by the invokerPluginKey tag. Reach out to the app vendor and flag this issue to them. \n\nAdditionally, the className tag refers to the implementation of CacheManager invoked and may be helpful. ",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -118,7 +123,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -130,12 +136,15 @@
           "refId": "A"
         }
       ],
-      "title": "flush all events",
+      "title": "Flush All Caches Rate (cluster wide)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
-      "description": "Indicates that a single cache has all of its entries removed. This may or may not cause slowdowns in products or plugins. \n\nCheck the frequency at which these cache removals occur and from which product. You can find out what plugin created the cache using the pluginKeyAtCreation tag. If excessive, consider reaching out to the app vendor and flag this issue to them. ",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
+      "description": "Indicates that a single cache has all of its entries removed. This may or may not cause slowdowns in products or plugins. \n\nCheck the frequency at which these cache removals occur and from which product. You can find out what plugin created the cache using the pluginKeyAtCreation tag. Additionally, the className tag refers to the implementation of Cache, which may be helpful. If the frequency is excessive, consider reaching out to the app vendor and flag this issue to them. ",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -200,7 +209,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -212,12 +222,15 @@
           "refId": "A"
         }
       ],
-      "title": "remove all events",
+      "title": "Remove all entries rate (cluster wide)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
-      "description": "Measure how many times a plugin has been disabled since uptime.\n\nSome caches are cleared when plugin is disabled/ enabled and may have performance impact. If you see high counts, check the UPM or application logs to investigate which plugin is contributing to high counts.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
+      "description": "Measure how many times a plugin has been disabled/enabled since uptime.\n\nSome caches are cleared when plugin is disabled/ enabled and this may have a short term performance impact. To understand what has been disabled/enabled, check the Universal Plugin Manager audit logs.\nhttps://confluence.atlassian.com/upm/viewing-installed-apps-273875714.html",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -282,7 +295,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -302,12 +316,15 @@
           "refId": "B"
         }
       ],
-      "title": "plugin enabled/disabled events",
+      "title": "Plugin enabled/disabled events (per node)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
-      "description": "Indicates that a single entry in a cache has been reset. This may or may not cause slowdowns in products or plugins. \n\nCheck the frequency at which these cache resets occur and from which product. You can find out what plugin created the cache using the pluginKeyAtCreation tag. If excessive, consider reaching out to the app vendor and flag this issue to them. ",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
+      "description": "Indicates that a single entry in a cache has been reset. This may or may not cause slowdowns in products or plugins. \n\nCheck the frequency at which these cache resets occur and from which product. You can find out what plugin created the cache using the pluginKeyAtCreation tag. Additionally, the className tag refers to the implementation of CacedReference, which may be helpful. If the frequency is excessive, consider reaching out to the app vendor and flag this issue to them. ",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -372,7 +389,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -384,12 +402,12 @@
           "refId": "A"
         }
       ],
-      "title": "reset events",
+      "title": "Reset cache rate (cluster wide)",
       "type": "timeseries"
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 32,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -403,5 +421,6 @@
   "timezone": "",
   "title": "Cache clearing",
   "uid": "bi4AbQtna",
-  "version": 5
+  "version": 3,
+  "weekStart": ""
 }

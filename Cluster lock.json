@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -20,15 +23,17 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 6,
   "links": [],
   "liveNow": false,
   "panels": [
     {
-      "datasource": null,
-      "description": "Measures how long a database cluster lock was held for. Used by Confluence in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
+      "description": "Measures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -71,7 +76,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "8.5.1",
       "targets": [
         {
           "exemplar": true,
@@ -81,12 +86,15 @@
           "refId": "A"
         }
       ],
-      "title": "cluster locks held",
+      "title": "Active Cluster Locks Held (current - cluster wide)",
       "type": "gauge"
     },
     {
-      "datasource": null,
-      "description": "Measures how long a database cluster lock was held for. Used by Confluence in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
+      "description": "Measures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -151,7 +159,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -163,12 +172,15 @@
           "refId": "A"
         }
       ],
-      "title": "active locks held (cluster wide)",
+      "title": "Active Locks Waiting (current - cluster wide)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
-      "description": "Measures how long a database cluster lock was waited for. Used by Confluence in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
+      "description": "Measures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -211,7 +223,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "8.5.1",
       "targets": [
         {
           "exemplar": true,
@@ -221,12 +233,15 @@
           "refId": "A"
         }
       ],
-      "title": "cluster locks held",
+      "title": "Active Cluster Locks Held (over time - cluster wide)",
       "type": "gauge"
     },
     {
-      "datasource": null,
-      "description": "Measures how long a database cluster lock was waited for. Used by Confluence in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
+      "description": "Measures how long a database cluster lock was waited for. Used by Jira in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -291,7 +306,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -303,11 +319,11 @@
           "refId": "A"
         }
       ],
-      "title": "active locks waiting (cluster wide)",
+      "title": "Active Locks Waiting (over time - cluster wide)",
       "type": "timeseries"
     }
   ],
-  "schemaVersion": 32,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -321,5 +337,6 @@
   "timezone": "",
   "title": "Cluster Locks",
   "uid": "dq5VGx2na",
-  "version": 3
+  "version": 2,
+  "weekStart": ""
 }

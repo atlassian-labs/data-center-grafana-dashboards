@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -17,7 +20,10 @@
         "type": "dashboard"
       },
       {
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "expr": "",
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -45,13 +51,17 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1652239174330,
+  "id": 7,
+  "iteration": 1657085361665,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "editable": false,
       "error": false,
       "gridPos": {
@@ -143,7 +153,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "span": 0,
@@ -161,7 +172,7 @@
           "refId": "A"
         }
       ],
-      "title": "load using AO's EntityManager (mean - cluster wide)",
+      "title": "Load Using AO EntityManager (mean - cluster wide)",
       "type": "timeseries"
     },
     {
@@ -241,7 +252,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "span": 0,
@@ -258,7 +270,7 @@
           "refId": "A"
         }
       ],
-      "title": "load using AO's EntityManager (p99 - cluster wide)",
+      "title": "Load Using AO EntityManager (p99 - cluster wide)",
       "type": "timeseries"
     },
     {
@@ -338,7 +350,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "span": 0,
@@ -356,11 +369,15 @@
           "refId": "A"
         }
       ],
-      "title": "cumulative count using AO's EntityManager (cluster wide)",
+      "title": "Cumulative Count Using AO's EntityManager (cluster wide)",
       "type": "timeseries"
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "editable": false,
       "error": false,
       "gridPos": {
@@ -427,7 +444,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.5.1",
       "span": 0,
       "targets": [
         {
@@ -442,7 +459,7 @@
           "refId": "A"
         }
       ],
-      "title": "number of running queries using AO's execute in transaction",
+      "title": "Active Queries Using AO's Execute In Transaction (current - cluster wide)",
       "type": "gauge"
     },
     {
@@ -522,7 +539,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "span": 0,
@@ -539,11 +557,15 @@
           "refId": "A"
         }
       ],
-      "title": "queries running using AO's execute in transaction (cluster wide)",
+      "title": "Active Queries Running Using AO's Execute In Transaction (over time - active count)",
       "type": "timeseries"
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "editable": false,
       "error": false,
       "gridPos": {
@@ -610,7 +632,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.5.1",
       "span": 0,
       "targets": [
         {
@@ -625,7 +647,7 @@
           "refId": "A"
         }
       ],
-      "title": "number of running queries using SAL's execute in transaction",
+      "title": "Queries Using SAL's execute in transaction (current - active count)",
       "type": "gauge"
     },
     {
@@ -705,7 +727,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "span": 0,
@@ -722,11 +745,15 @@
           "refId": "A"
         }
       ],
-      "title": "queries running using SAL's execute in transaction",
+      "title": "Queries Using SAL's execute in transaction (over time - active count)",
       "type": "timeseries"
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "editable": false,
       "error": false,
       "gridPos": {
@@ -760,8 +787,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -793,7 +819,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "8.5.1",
       "span": 0,
       "targets": [
         {
@@ -808,7 +834,7 @@
           "refId": "A"
         }
       ],
-      "title": "Number of running AO upgrade tasks",
+      "title": "AO Upgrade Tasks (current - active count)",
       "type": "gauge"
     },
     {
@@ -860,8 +886,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -888,7 +913,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "span": 0,
@@ -905,12 +931,12 @@
           "refId": "A"
         }
       ],
-      "title": "running AO upgrade tasks",
+      "title": "AO Upgrade Tasks - (over time - active count)",
       "type": "timeseries"
     }
   ],
   "refresh": "",
-  "schemaVersion": 34,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -918,8 +944,8 @@
       {
         "current": {
           "selected": false,
-          "text": "Blitz",
-          "value": "Blitz"
+          "text": "No data sources found",
+          "value": ""
         },
         "hide": 0,
         "includeAll": false,
@@ -944,6 +970,6 @@
   "timezone": "",
   "title": "Database load",
   "uid": "qqVaZU5nz",
-  "version": 50,
+  "version": 2,
   "weekStart": ""
 }
