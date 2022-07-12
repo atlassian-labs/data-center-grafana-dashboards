@@ -61,7 +61,7 @@
         "type": "prometheus",
         "uid": "${query0}"
       },
-      "description": "Measures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
+      "description": "Measures how long a database cluster lock was held for. Used by Confluence in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
       "editable": false,
       "error": false,
       "fieldConfig": {
@@ -130,7 +130,7 @@
         "type": "prometheus",
         "uid": "${query0}"
       },
-      "description": "Measures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
+      "description": "Measures how long a database cluster lock was held for. Used by Confluence in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
       "editable": false,
       "error": false,
       "fieldConfig": {
@@ -199,7 +199,7 @@
         "type": "prometheus",
         "uid": "${query0}"
       },
-      "description": "Measures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
+      "description": "Measures how long a database cluster lock was held for. Used by Confluence in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
       "editable": false,
       "error": false,
       "fieldConfig": {
@@ -297,7 +297,7 @@
         "type": "prometheus",
         "uid": "${query0}"
       },
-      "description": "Measures how long a database cluster lock was waited for. Used by Jira in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
+      "description": "Measures how long a database cluster lock was waited for. Used by Confluence in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
       "editable": false,
       "error": false,
       "fieldConfig": {
@@ -395,7 +395,7 @@
         "type": "prometheus",
         "uid": "${query0}"
       },
-      "description": "* Average heavily weights timers from the last 5 minutes\n\nMeasures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
+      "description": "* Average heavily weights timers from the last 5 minutes\n\nMeasures how long a database cluster lock was held for. Used by Confluence in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -578,7 +578,7 @@
         "type": "prometheus",
         "uid": "${query0}"
       },
-      "description": "* Average heavily weights timers from the last 5 minutes\nMeasures how long a database cluster lock was waited for. Used by Jira in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
+      "description": "* Average heavily weights timers from the last 5 minutes\nMeasures how long a database cluster lock was waited for. Used by Confluence in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
       "fieldConfig": {
         "defaults": {
           "color": {
