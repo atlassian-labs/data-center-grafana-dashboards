@@ -18,22 +18,52 @@
           "type": "dashboard"
         },
         "type": "dashboard"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "expr": "",
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "iconSize": 0,
+        "lineColor": "",
+        "name": "Annotations & Alerts",
+        "query": "",
+        "showLine": false,
+        "step": "",
+        "tagKeys": "",
+        "tagsField": "",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "textField": "",
+        "textFormat": "",
+        "titleFormat": "",
+        "type": "dashboard"
       }
     ]
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": 17,
+  "iteration": 1657606892935,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "${query0}"
       },
       "description": "Measures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
+      "editable": false,
+      "error": false,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -63,6 +93,7 @@
         "y": 0
       },
       "id": 2,
+      "isNew": false,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -77,10 +108,15 @@
         "text": {}
       },
       "pluginVersion": "8.5.1",
+      "span": 0,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${query0}"
+          },
           "exemplar": true,
-          "expr": "sum without (instance,tag_invokerPluginKey,tag_implementation,tag_lockName) (com_atlassian_confluence_metrics_Value{category00=\"cluster\",category01=\"lock\",category02=\"held\",tag_statistic=\"active\"})",
+          "expr": "sum without (instance,tag_pluginKeyAtCreation,tag_implementation,tag_lockName) (com_atlassian_confluence_metrics_Value{category00=\"cluster\",category01=\"lock\",category02=\"held\",tag_statistic=\"active\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -92,95 +128,11 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "${query0}"
       },
       "description": "Measures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 5,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 0
-      },
-      "id": 5,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "topk(5, sum without(instance,tag_implementation) (com_atlassian_confluence_metrics_Value{category00=\"cluster\",category01=\"lock\",category02=\"held\",tag_statistic=\"active\",tag_invokerPluginKey!=\"undefined\"}))",
-          "interval": "",
-          "legendFormat": "{{tag_invokerPluginKey}} - {{tag_lockName}} (lock name)",
-          "refId": "A"
-        }
-      ],
-      "title": "Active Locks Waiting (current - cluster wide)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "UKZbfKl7k"
-      },
-      "description": "Measures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
+      "editable": false,
+      "error": false,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -206,10 +158,11 @@
       "gridPos": {
         "h": 9,
         "w": 12,
-        "x": 0,
-        "y": 9
+        "x": 12,
+        "y": 0
       },
-      "id": 3,
+      "id": 7,
+      "isNew": false,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -224,24 +177,31 @@
         "text": {}
       },
       "pluginVersion": "8.5.1",
+      "span": 0,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${query0}"
+          },
           "exemplar": true,
-          "expr": "sum without (instance,tag_invokerPluginKey,tag_implementation,tag_lockName) (com_atlassian_confluence_metrics_Value{category00=\"cluster\",category01=\"lock\",category02=\"waited\",tag_statistic=\"active\"})",
+          "expr": "sum without (instance,tag_pluginKeyAtCreation,tag_implementation,tag_lockName) (com_atlassian_confluence_metrics_Value{category00=\"cluster\",category01=\"lock\",category02=\"held\",tag_statistic=\"active\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Active Cluster Locks Held (over time - cluster wide)",
+      "title": "Active Locks Waiting (current - cluster wide)",
       "type": "gauge"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "${query0}"
       },
-      "description": "Measures how long a database cluster lock was waited for. Used by Jira in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
+      "description": "Measures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nLock contention can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue. It maybe normal to have a thread holding onto a lock for a long time, if there aren’t any threads waiting for the lock - see db.cluster.lock.waited.duration to find out if there are any threads waiting for the lock.",
+      "editable": false,
+      "error": false,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -260,12 +220,15 @@
               "viz": false
             },
             "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -288,17 +251,19 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": ""
         },
         "overrides": []
       },
       "gridPos": {
         "h": 9,
         "w": 12,
-        "x": 12,
+        "x": 0,
         "y": 9
       },
-      "id": 6,
+      "id": 5,
+      "isNew": false,
       "options": {
         "legend": {
           "calcs": [],
@@ -310,33 +275,522 @@
           "sort": "none"
         }
       },
+      "span": 0,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${query0}"
+          },
           "exemplar": true,
-          "expr": "topk(5, sum without(instance,tag_implementation) (com_atlassian_confluence_metrics_Value{category00=\"cluster\",category01=\"lock\",category02=\"waited\",tag_statistic=\"active\",tag_invokerPluginKey!=\"undefined\"}))",
+          "expr": "sum without(instance,implementation, tag_lockName) (com_atlassian_confluence_metrics_Value{category00=\"cluster\",category01=\"lock\",category02=\"held\",tag_statistic=\"active\"})",
           "interval": "",
-          "legendFormat": "{{tag_invokerPluginKey}} - {{tag_lockName}} (lock name)",
+          "legendFormat": "{{tag_pluginKeyAtCreation}} ",
+          "refId": "A"
+        }
+      ],
+      "title": "Active Cluster Locks Held (over time - cluster wide)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${query0}"
+      },
+      "description": "Measures how long a database cluster lock was waited for. Used by Jira in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
+      "editable": false,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": ""
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 6,
+      "isNew": false,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "span": 0,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${query0}"
+          },
+          "exemplar": true,
+          "expr": "sum without(instance,implementation, tag_lockName) (com_atlassian_confluence_metrics_Value{category00=\"cluster\",category01=\"lock\",category02=\"waited\",tag_statistic=\"active\"})",
+          "interval": "",
+          "legendFormat": "{{tag_pluginKeyAtCreation}}",
           "refId": "A"
         }
       ],
       "title": "Active Locks Waiting (over time - cluster wide)",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${query0}"
+      },
+      "description": "* Average heavily weights timers from the last 5 minutes\n\nMeasures how long a database cluster lock was held for. Used by Jira in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "lock name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 350
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 211
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "plugin key"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 383
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Avg"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 242
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 18
+      },
+      "id": 3,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "99th Percentile"
+          }
+        ]
+      },
+      "pluginVersion": "8.5.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${query0}"
+          },
+          "exemplar": false,
+          "expr": "avg by (tag_lockName, tag_pluginKeyAtCreation) (com_atlassian_confluence_metrics_Mean{category00=\"cluster\",category01=\"lock\",category02=\"held\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${query0}"
+          },
+          "exemplar": false,
+          "expr": "sum by (tag_lockName, tag_pluginKeyAtCreation) (com_atlassian_confluence_metrics_Count{category00=\"cluster\",category01=\"lock\",category02=\"held\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${query0}"
+          },
+          "exemplar": false,
+          "expr": "max by (tag_lockName, tag_pluginKeyAtCreation)  (com_atlassian_confluence_metrics_99thPercentile{category00=\"cluster\",category01=\"lock\",category02=\"held\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "C"
+        }
+      ],
+      "title": "Most locks held (cluster wide)",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value #A": false,
+              "category00": true,
+              "category01": true,
+              "category02": true,
+              "job": true,
+              "name": true,
+              "tag_lockName": false,
+              "tag_pluginKeyAtCreation": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Value #A": "Avg* time",
+              "Value #B": "Count",
+              "Value #C": "99th Percentile time",
+              "tag_lockName": "lock name",
+              "tag_pluginKeyAtCreation": "plugin key"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${query0}"
+      },
+      "description": "* Average heavily weights timers from the last 5 minutes\nMeasures how long a database cluster lock was waited for. Used by Jira in a clustered environment.\n\nIf there many threads waiting for the same lock, it can lead to performance degradation. Contact the vendor responsible to flag and investigate the issue.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "lock name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 518
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 79
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "plugin key"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 278
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Avg"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 121
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "id": 11,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "99th Percentile"
+          }
+        ]
+      },
+      "pluginVersion": "8.5.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${query0}"
+          },
+          "exemplar": false,
+          "expr": "avg by (tag_lockName, tag_pluginKeyAtCreation) (com_atlassian_confluence_metrics_Mean{category00=\"cluster\",category01=\"lock\",category02=\"waited\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${query0}"
+          },
+          "exemplar": false,
+          "expr": "sum by (tag_lockName, tag_pluginKeyAtCreation) (com_atlassian_confluence_metrics_Count{category00=\"cluster\",category01=\"lock\",category02=\"waited\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${query0}"
+          },
+          "exemplar": false,
+          "expr": "max by (tag_lockName, tag_pluginKeyAtCreation)  (com_atlassian_confluence_metrics_99thPercentile{category00=\"cluster\",category01=\"lock\",category02=\"waited\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "C"
+        }
+      ],
+      "title": "Most locks waited (cluster wide)",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value #A": false,
+              "category00": true,
+              "category01": true,
+              "category02": true,
+              "job": true,
+              "name": true,
+              "tag_lockName": false,
+              "tag_pluginKeyAtCreation": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Value #A": "Avg* time",
+              "Value #B": "Count",
+              "Value #C": "99th Percentile time",
+              "tag_lockName": "lock name",
+              "tag_pluginKeyAtCreation": "plugin key"
+            }
+          }
+        }
+      ],
+      "type": "table"
     }
   ],
+  "refresh": "",
   "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "Prometheus"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Datasource",
+        "multi": false,
+        "name": "query0",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Cluster Locks",
-  "uid": "dq5VGx2na",
+  "uid": "dq5VGx2nz",
   "version": 2,
   "weekStart": ""
 }

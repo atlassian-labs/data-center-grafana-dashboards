@@ -24,15 +24,12 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
+  "id": 12,
   "links": [],
   "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "UKZbfKl7k"
-      },
+      "datasource": {},
       "description": "Indicates that all caches are being flushed by a plugin. This is an operation which should not be triggered by external plugins and can lead to product slowdowns\n\n \n\nDetermine who invoked this, this can be determined by the invokerPluginKey tag. Reach out to the app vendor and flag this issue to them. \n\nAdditionally, the className tag refers to the implementation of CacheManager invoked and may be helpful. ",
       "fieldConfig": {
         "defaults": {
@@ -129,8 +126,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "8zg0mUe7z"
+          },
           "exemplar": true,
-          "expr": "rate(com_atlassian_confluence_metrics_Count{category00=\"cacheManager\",name=\"flushAll\",tag_invokerPluginKey!=\"undefined\"}[5m])",
+          "expr": "rate(com_atlassian_confluence_metrics_Count{category00=\"cacheManager\",name=\"flushAll\"}[5m])",
           "interval": "",
           "legendFormat": "{{tag_invokerPluginKey}}",
           "refId": "A"
@@ -142,7 +143,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "8zg0mUe7z"
       },
       "description": "Indicates that a single cache has all of its entries removed. This may or may not cause slowdowns in products or plugins. \n\nCheck the frequency at which these cache removals occur and from which product. You can find out what plugin created the cache using the pluginKeyAtCreation tag. Additionally, the className tag refers to the implementation of Cache, which may be helpful. If the frequency is excessive, consider reaching out to the app vendor and flag this issue to them. ",
       "fieldConfig": {
@@ -215,8 +216,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "8zg0mUe7z"
+          },
           "exemplar": true,
-          "expr": "rate(com_atlassian_confluence_metrics_Count{category00=\"cache\",name=\"removeAll\",tag_pluginKeyAtCreation!=\"undefined\"}[5m])",
+          "expr": "sum by (tag_pluginKeyAtCreation) (rate(com_atlassian_confluence_metrics_Count{category00=\"cache\",name=\"removeAll\"}[5m]))",
           "interval": "",
           "legendFormat": "{{tag_pluginKeyAtCreation}}",
           "refId": "A"
@@ -316,13 +321,13 @@
           "refId": "B"
         }
       ],
-      "title": "Plugin enabled/disabled events (per node)",
+      "title": "Plugin enabled/disabled events (cluster wide)",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "8zg0mUe7z"
       },
       "description": "Indicates that a single entry in a cache has been reset. This may or may not cause slowdowns in products or plugins. \n\nCheck the frequency at which these cache resets occur and from which product. You can find out what plugin created the cache using the pluginKeyAtCreation tag. Additionally, the className tag refers to the implementation of CacedReference, which may be helpful. If the frequency is excessive, consider reaching out to the app vendor and flag this issue to them. ",
       "fieldConfig": {
@@ -395,8 +400,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "8zg0mUe7z"
+          },
           "exemplar": true,
-          "expr": "rate(com_atlassian_confluence_metrics_Count{category00=\"cachedReference\",name=\"reset\",tag_pluginKeyAtCreation!=\"undefined\"}[5m])",
+          "expr": "sum by (tag_pluginKeyAtCreation) (rate(com_atlassian_confluence_metrics_Count{category00=\"cachedReference\",name=\"reset\"}[5m]))",
           "interval": "",
           "legendFormat": "{{tag_pluginKeyAtCreation}}",
           "refId": "A"
@@ -421,6 +430,6 @@
   "timezone": "",
   "title": "Cache clearing",
   "uid": "bi4AbQtna",
-  "version": 3,
+  "version": 2,
   "weekStart": ""
 }
