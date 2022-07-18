@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -20,14 +23,16 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
-  "id": 7,
+  "id": 8,
   "links": [],
   "liveNow": false,
   "panels": [
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long a confluence search will take to return a result.\n",
       "fieldConfig": {
         "defaults": {
@@ -93,7 +98,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -105,11 +111,14 @@
           "refId": "A"
         }
       ],
-      "title": "Confluence Search Mean",
+      "title": "Confluence Search Response Times (mean - per node)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long a confluence search will take to return a result.\n",
       "fieldConfig": {
         "defaults": {
@@ -175,7 +184,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -187,11 +197,14 @@
           "refId": "A"
         }
       ],
-      "title": "Confluence Search p99",
+      "title": "Confluence Search Response Times (p99 - per node)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long a confluence takes to reindex\n",
       "fieldConfig": {
         "defaults": {
@@ -257,7 +270,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -269,11 +283,14 @@
           "refId": "A"
         }
       ],
-      "title": "Confluence Index Mean",
+      "title": "Confluence Index Times (top 5 - cluster wide)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long a confluence takes to reindex\n",
       "fieldConfig": {
         "defaults": {
@@ -339,7 +356,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -351,11 +369,14 @@
           "refId": "A"
         }
       ],
-      "title": "Confluence Index p99",
+      "title": "Confluence Index Time (p99 - cluster wide) ",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long a confluence LongRunningTask takes to complete\n",
       "fieldConfig": {
         "defaults": {
@@ -421,7 +442,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -433,11 +455,14 @@
           "refId": "A"
         }
       ],
-      "title": "Confluence Long Running Tasks Mean",
+      "title": "Confluence Long Running Tasks Time (mean - cluster wide)",
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "UKZbfKl7k"
+      },
       "description": "Measures how long a confluence Long Running Task takes to complete\n",
       "fieldConfig": {
         "defaults": {
@@ -503,7 +528,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -515,11 +541,11 @@
           "refId": "A"
         }
       ],
-      "title": "Confluence Long Running Task p99",
+      "title": "Confluence Long Running Task Time (p99 - per node)",
       "type": "timeseries"
     }
   ],
-  "schemaVersion": 32,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -533,5 +559,6 @@
   "timezone": "",
   "title": "Plugin monitoring",
   "uid": "IgFkwTB7k",
-  "version": 1
+  "version": 3,
+  "weekStart": ""
 }
