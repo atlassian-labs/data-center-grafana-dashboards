@@ -102,7 +102,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "java_lang_Runtime_Pid{product=\"confluence\"}",
@@ -177,7 +177,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "java_lang_Runtime_Uptime{product=\"confluence\"}/1000",
@@ -252,7 +252,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "java_lang_Runtime_StartTime{product=\"confluence\"}",
@@ -327,7 +327,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "java_lang_OperatingSystem_AvailableProcessors{product=\"confluence\"}",
@@ -336,7 +336,7 @@
           "refId": "A"
         }
       ],
-      "title": "CPU Cores",
+      "title": "Available CPU Cores",
       "type": "stat"
     },
     {
@@ -376,7 +376,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "java_lang_OperatingSystem_AvailableProcessors{instance=\"localhost:9000\"}",
+          "expr": "java_lang_OperatingSystem_AvailableProcessors{}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -463,26 +463,26 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "increase(java_lang_G1_Old_Generation_CollectionTime{product=\"confluence\"}[10m])",
           "format": "time_series",
           "hide": false,
           "interval": "60s",
-          "legendFormat": "{{gc}} ({{instance}})",
+          "legendFormat": "G1_Old_Generation ({{instance}})",
           "refId": "A"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "increase(java_lang_G1_Young_Generation_CollectionTime{product=\"confluence\"}[10m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "G1_Young_Generation ({{instance}})",
           "refId": "B"
         }
       ],
@@ -608,7 +608,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "(java_lang_OperatingSystem_ProcessCpuLoad{product=\"confluence\"} * 100)",
@@ -746,7 +746,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "100*(jvm_memory_bytes_used{area=\"heap\",product=\"confluence\"}/jvm_memory_bytes_max{area=\"heap\",product=\"confluence\"})",
@@ -815,7 +815,7 @@
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -841,26 +841,26 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "increase(java_lang_G1_Old_Generation_CollectionCount{product=\"confluence\"}[10m])",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
-          "legendFormat": "{{gc}} ({{instance}})",
+          "legendFormat": "G1_Old_Generation ({{instance}})",
           "refId": "A"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "increase(java_lang_G1_Young_Generation_CollectionCount{product=\"confluence\"}[10m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "G1_Young_Generation ({{instance}})",
           "refId": "B"
         }
       ],
@@ -927,7 +927,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "jvm_threads_state{state=\"BLOCKED\"}",
@@ -952,6 +952,100 @@
       "panels": [],
       "title": "Tomcat",
       "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 16,
+        "x": 0,
+        "y": 32
+      },
+      "id": 38,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "com_atlassian_confluence_metrics_Mean{category00=\"db\",category01=\"connection\",category02=\"latency\",name=\"statistics\"}",
+          "legendFormat": "{{instance}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Database Latency",
+      "type": "timeseries"
     },
     {
       "fieldConfig": {
@@ -1027,10 +1121,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
-          "expr": "increase(Standalone_GlobalRequestProcessor_requestCount[10m])",
+          "expr": "increase(Standalone_GlobalRequestProcessor_requestCount{}[10m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{name}} count ({{instance}})",
@@ -1039,10 +1133,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
-          "expr": "increase(Standalone_GlobalRequestProcessor_errorCount[10m])",
+          "expr": "increase(Standalone_GlobalRequestProcessor_errorCount{}[10m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{name}} error ({{instance}})",
@@ -1170,10 +1264,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
-          "expr": "(Standalone_ThreadPool_currentThreadCount / Standalone_ThreadPool_maxThreads) * 100",
+          "expr": "(Standalone_ThreadPool_currentThreadCount{} / Standalone_ThreadPool_maxThreads{}) * 100",
           "hide": false,
           "interval": "",
           "legendFormat": "used {{name}} ({{instance}})",
@@ -1265,10 +1359,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
-          "expr": "increase(Standalone_GlobalRequestProcessor_processingTime[10m]) / increase(Standalone_GlobalRequestProcessor_requestCount[10m])",
+          "expr": "increase(Standalone_GlobalRequestProcessor_processingTime{}[10m]) / increase(Standalone_GlobalRequestProcessor_requestCount{}[10m])",
           "hide": false,
           "interval": "",
           "legendFormat": "{{name}} ({{instance}})",
@@ -1360,10 +1454,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
-          "expr": "Standalone_Manager_activeSessions",
+          "expr": "Standalone_Manager_activeSessions{}",
           "hide": false,
           "interval": "",
           "legendFormat": "active sessions: {{context}} ({{instance}})",
@@ -1372,10 +1466,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
-          "expr": "Standalone_Manager_rejectedSessions",
+          "expr": "Standalone_Manager_rejectedSessions{}",
           "hide": false,
           "interval": "",
           "legendFormat": "rejected sessions: {{context}} ({{instance}})",
@@ -1512,10 +1606,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
-          "expr": "(com_mchange_v2_c3p0_PooledDataSource_numBusyConnections / com_mchange_v2_c3p0_PooledDataSource_maxPoolSize) * 100",
+          "expr": "(com_mchange_v2_c3p0_PooledDataSource_numBusyConnections{} / com_mchange_v2_c3p0_PooledDataSource_maxPoolSize{}) * 100",
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
@@ -1606,10 +1700,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+
+            "uid": "$datasource"
           },
           "exemplar": true,
-          "expr": "com_mchange_v2_c3p0_PooledDataSource_numBusyConnections",
+          "expr": "com_mchange_v2_c3p0_PooledDataSource_numBusyConnections{}",
           "interval": "",
           "legendFormat": "active {{instance}}",
           "refId": "A"
@@ -1617,10 +1712,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
-          "expr": "com_mchange_v2_c3p0_PooledDataSource_numIdleConnections",
+          "expr": "com_mchange_v2_c3p0_PooledDataSource_numIdleConnections{}",
           "hide": false,
           "interval": "",
           "legendFormat": "idle {{instance}}",
@@ -1704,7 +1799,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "rate(com_atlassian_confluence_metrics_Count{category00=\"postgres\",name=\"reads\"}[10m])",
@@ -1715,7 +1810,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "rate(com_atlassian_confluence_metrics_Count{category00=\"postgres\",name=\"writes\"}[10m])",
@@ -1732,18 +1827,39 @@
   "refresh": "",
   "schemaVersion": 35,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "confluence"
+  ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "default",
+          "value": "default"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Overview",
-  "uid": "IeEDnNp7x",
-  "version": 22,
+  "title": "Confluence Overview",
+  "version": 1,
   "weekStart": ""
 }
