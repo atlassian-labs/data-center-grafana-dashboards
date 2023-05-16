@@ -32,7 +32,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -48,7 +48,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "8zg0mUe7z"
+        "uid": "$datasource"
       },
       "description": "Measures how long web fragment condition will take to determine whether a web fragment should be displayed or not.\n\nWeb fragments conditions determine whether a link or a section on a page should be displayed. Slow web fragment conditions lead to slow page load times especially if they are not cached. Reach out to the app vendor responsible to flag and investigate. ",
       "fieldConfig": {
@@ -149,12 +149,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "8zg0mUe7z"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "# We do this because the average of averages is not the real average. We must weigh them by the count\n(sum without (instance) ((com_atlassian_confluence_metrics_Mean{category00=\"web\", category01=\"fragment\", name=\"condition\"}) * \n(delta(com_atlassian_confluence_metrics_Count{category00=\"web\", category01=\"fragment\", name=\"condition\"}[5m])))) /\n(sum without (instance) (delta(com_atlassian_confluence_metrics_Count{category00=\"web\", category01=\"fragment\", name=\"condition\"}[5m])))",
           "interval": "",
-          "legendFormat": "{{tag_fromPluginKey}} - {{tag_conditionClassName}} (condition)",
+          "legendFormat": "{{ instance }} - {{tag_fromPluginKey}} - {{tag_conditionClassName}} (condition)",
           "refId": "A"
         }
       ],
@@ -164,7 +164,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "8zg0mUe7z"
+        "uid": "$datasource"
       },
       "description": "Measures how long web fragment condition will take to determine whether a web fragment should be displayed or not.\n\nWeb fragments conditions determine whether a link or a section on a page should be displayed. Slow web fragment conditions lead to slow page load times especially if they are not cached. Reach out to the app vendor responsible to flag and investigate. ",
       "fieldConfig": {
@@ -240,12 +240,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "8zg0mUe7z"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "com_atlassian_confluence_metrics_99thPercentile{category00=\"web\", category01=\"fragment\", name=\"condition\"}",
           "interval": "",
-          "legendFormat": "{{tag_fromPluginKey}} - {{tag_conditionClassName}} (condition)",
+          "legendFormat": "{{ insatance }} - {{tag_fromPluginKey}} - {{tag_conditionClassName}} (condition)",
           "refId": "A"
         }
       ],
@@ -256,7 +256,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -272,7 +272,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "8zg0mUe7z"
+        "uid": "$datasource"
       },
       "description": "Measures how long a Soy Template web panel is taking to render.\n\nThe template renderer might be long-running. If there is a plugin with a slow Soy renderer it might be worth adding (tag__templateName) to the query and contacting the vendor responsible to investigate if long-running queries are expected.",
       "fieldConfig": {
@@ -330,7 +330,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "avg without (instance, tag_templateName) (com_atlassian_confluence_metrics_Mean{name=\"webTemplateRenderer\",tag_templateRenderer=\"soy\"})",
@@ -343,7 +343,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "sum without (instance, tag_templateName) (com_atlassian_confluence_metrics_Count{name=\"webTemplateRenderer\",tag_templateRenderer=\"soy\"})",
@@ -357,7 +357,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "max without (instance, tag_templateName) (com_atlassian_confluence_metrics_99thPercentile{name=\"webTemplateRenderer\",tag_templateRenderer=\"soy\"})",
@@ -489,12 +489,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "# We do this because the average of averages is not the real average. We must weigh them by the count\n(sum without (instance, tag_entityType) ((com_atlassian_confluence_metrics_Mean{name=\"webTemplateRenderer\",tag_templateRenderer=\"soy\"}) * \n(delta(com_atlassian_confluence_metrics_Count{name=\"webTemplateRenderer\",tag_templateRenderer=\"soy\"}[5m])))) /\n(sum without (instance, tag_entityType) (delta(com_atlassian_confluence_metrics_Count{name=\"webTemplateRenderer\",tag_templateRenderer=\"soy\"}[5m])))",
           "interval": "",
-          "legendFormat": "{{tag_fromPluginKey}} - {{tag_templateName}} (template)",
+          "legendFormat": "{{ instance }} - {{tag_fromPluginKey}} - {{tag_templateName}} (template)",
           "refId": "A"
         }
       ],
@@ -584,12 +584,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "topk(5, com_atlassian_confluence_metrics_99thPercentile{name=\"webTemplateRenderer\",tag_templateRenderer=\"soy\"})",
           "interval": "",
-          "legendFormat": "{{tag_fromPluginKey}} - {{tag_templateName}}__{{instance}} (template)",
+          "legendFormat": "{{ instance }} - {{tag_fromPluginKey}} - {{tag_templateName}}__{{instance}} (template)",
           "refId": "A"
         }
       ],
@@ -600,7 +600,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -714,16 +714,16 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "8zg0mUe7z"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "# We do this because the average of averages is not the real average. We must weigh them by the count\n(sum without (instance) ((com_atlassian_confluence_metrics_Mean{category00=\"web\", category01=\"resource\", name=\"condition\"}) * \n(delta(com_atlassian_confluence_metrics_Count{category00=\"web\", category01=\"resource\", name=\"condition\"}[5m])))) /\n(sum without (instance) (delta(com_atlassian_confluence_metrics_Count{category00=\"web\", category01=\"resource\", name=\"condition\"}[5m])))",
           "interval": "",
-          "legendFormat": "{{tag_fromPluginKey}} - {{tag_conditionClassName}} (condition)",
+          "legendFormat": "{{ instance }} - {{tag_fromPluginKey}} - {{tag_conditionClassName}} (condition)",
           "refId": "A"
         }
       ],
-      "title": "Web Resource Condition Evaluation ktime (mean of last 5 minutes - cluster wide)",
+      "title": "Web Resource Condition Evaluation time (mean of last 5 minutes - cluster wide)",
       "type": "timeseries"
     },
     {
@@ -802,12 +802,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "8zg0mUe7z"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "com_atlassian_confluence_metrics_99thPercentile{category00=\"web\", category01=\"resource\", name=\"condition\"}",
           "interval": "",
-          "legendFormat": "{{tag_fromPluginKey}} - {{tag_conditionClassName}} (condition)",
+          "legendFormat": "{{ instance }} - {{tag_fromPluginKey}} - {{tag_conditionClassName}} (condition)",
           "refId": "A"
         }
       ],
@@ -818,7 +818,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -834,7 +834,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "8zg0mUe7z"
+        "uid": "$datasource"
       },
       "description": "Use this table to quickly identify the slowest calls and some outliers using the 99th percentile response time. Use this table to figure out which endpoint to investigate then correlate it with the other timeseries panels for more detailed diagnosis ",
       "fieldConfig": {
@@ -892,7 +892,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "topk(500, avg without (instance) (com_atlassian_confluence_metrics_Mean{category00=\"http\", category01=\"rest\", name=\"request\"}))",
@@ -905,7 +905,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "sum without (instance) (com_atlassian_confluence_metrics_Count{category00=\"http\", category01=\"rest\", name=\"request\"})",
@@ -919,7 +919,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "max without (instance) (com_atlassian_confluence_metrics_99thPercentile{category00=\"http\", category01=\"rest\", name=\"request\"})",
@@ -1046,12 +1046,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "# We do this because the average of averages is not the real average. We must weigh them by the count\n(sum without (instance, tag_entityType) ((com_atlassian_confluence_metrics_Mean{category00=\"http\", category01=\"rest\", name=\"request\"}) * \n(delta(com_atlassian_confluence_metrics_Count{category00=\"http\", category01=\"rest\", name=\"request\"}[5m])))) /\n(sum without (instance, tag_entityType) (delta(com_atlassian_confluence_metrics_Count{category00=\"http\", category01=\"rest\", name=\"request\"}[5m])))",
           "interval": "",
-          "legendFormat": "{{tag_fromPluginKey}} - {{tag_path}} (path)",
+          "legendFormat": "{{ instance }} - {{tag_fromPluginKey}} - {{tag_path}} (path)",
           "refId": "A"
         }
       ],
@@ -1061,7 +1061,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "8zg0mUe7z"
+        "uid": "$datasource"
       },
       "description": "Measures HTTP response of the REST APIs that uses the atlassian-rest module.\n\nCheck the frequency and duration of the rest requests. If excessive or very slow, consider reaching out to the app vendor and flag this issue to the",
       "editable": false,
@@ -1144,12 +1144,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "com_atlassian_confluence_metrics_99thPercentile{category00=\"http\", category01=\"rest\", name=\"request\"}",
           "interval": "",
-          "legendFormat": "{{tag_fromPluginKey}} - {{tag_path}} (path)",
+          "legendFormat": "{{ instance }} - {{tag_fromPluginKey}} - {{tag_path}} (path)",
           "refId": "A"
         }
       ],
@@ -1232,12 +1232,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${query0}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "avg without (instance, tag_path, tag_action) (com_atlassian_confluence_metrics_Mean{category00=\"http\",category01=\"rest\", name=\"request\"})",
           "interval": "",
-          "legendFormat": "{{tag_fromPluginKey}}",
+          "legendFormat": "{{ instance }} - {{tag_fromPluginKey}}",
           "refId": "A"
         }
       ],
@@ -1248,18 +1248,39 @@
   "refresh": "10s",
   "schemaVersion": 36,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "confluence"
+  ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "default",
+          "value": "default"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Response times",
-  "uid": "dA8tm85na",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
