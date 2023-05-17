@@ -31,7 +31,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "description": "Measures how long a confluence search will take to return a result.\n",
       "fieldConfig": {
@@ -80,7 +80,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -117,7 +118,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "description": "Measures how long a confluence search will take to return a result.\n",
       "fieldConfig": {
@@ -166,7 +167,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -203,7 +205,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "description": "Measures how long a confluence takes to reindex\n",
       "fieldConfig": {
@@ -252,7 +254,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -289,7 +292,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "description": "Measures how long a confluence takes to reindex\n",
       "fieldConfig": {
@@ -338,7 +341,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -375,7 +379,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "description": "Measures how long a confluence LongRunningTask takes to complete\n",
       "fieldConfig": {
@@ -424,7 +428,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -461,7 +466,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "description": "Measures how long a confluence Long Running Task takes to complete\n",
       "fieldConfig": {
@@ -510,7 +515,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -547,9 +553,31 @@
   ],
   "schemaVersion": 36,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "confluence"
+  ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "default",
+          "value": "default"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
@@ -557,8 +585,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Plugin monitoring",
-  "uid": "IgFkwTB7k",
-  "version": 3,
+  "title": "Confluence Plugin Monitoring",
+  "version": 1,
   "weekStart": ""
 }
