@@ -195,7 +195,7 @@
           "exemplar": true,
           "expr": "topk(5, (com_atlassian_confluence_metrics_99thPercentile{category00=\"search\", name=\"manager\"}))",
           "interval": "",
-          "legendFormat": "{{ instance }} {{tag_invokerPluginKey}}",
+          "legendFormat": "{{ instance }} {{tag_searchType}}",
           "refId": "A"
         }
       ],
