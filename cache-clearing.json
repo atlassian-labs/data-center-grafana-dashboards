@@ -128,7 +128,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "8zg0mUe7z"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "rate(com_atlassian_confluence_metrics_Count{category00=\"cacheManager\",name=\"flushAll\"}[5m])",
@@ -143,7 +143,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "8zg0mUe7z"
+        "uid": "$datasource"
       },
       "description": "Indicates that a single cache has all of its entries removed. This may or may not cause slowdowns in products or plugins. \n\nCheck the frequency at which these cache removals occur and from which product. You can find out what plugin created the cache using the pluginKeyAtCreation tag. Additionally, the className tag refers to the implementation of Cache, which may be helpful. If the frequency is excessive, consider reaching out to the app vendor and flag this issue to them. ",
       "fieldConfig": {
@@ -218,7 +218,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "8zg0mUe7z"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "sum by (tag_pluginKeyAtCreation) (rate(com_atlassian_confluence_metrics_Count{category00=\"cache\",name=\"removeAll\"}[5m]))",
@@ -233,7 +233,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "UKZbfKl7k"
+        "uid": "$datasource"
       },
       "description": "Measure how many times a plugin has been disabled/enabled since uptime.\n\nSome caches are cleared when plugin is disabled/ enabled and this may have a short term performance impact. To understand what has been disabled/enabled, check the Universal Plugin Manager audit logs.\nhttps://confluence.atlassian.com/upm/viewing-installed-apps-273875714.html",
       "fieldConfig": {
@@ -327,7 +327,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "8zg0mUe7z"
+        "uid": "$datasource"
       },
       "description": "Indicates that a single entry in a cache has been reset. This may or may not cause slowdowns in products or plugins. \n\nCheck the frequency at which these cache resets occur and from which product. You can find out what plugin created the cache using the pluginKeyAtCreation tag. Additionally, the className tag refers to the implementation of CacedReference, which may be helpful. If the frequency is excessive, consider reaching out to the app vendor and flag this issue to them. ",
       "fieldConfig": {
@@ -402,7 +402,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "8zg0mUe7z"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "sum by (tag_pluginKeyAtCreation) (rate(com_atlassian_confluence_metrics_Count{category00=\"cachedReference\",name=\"reset\"}[5m]))",
@@ -418,18 +418,39 @@
   "refresh": "10s",
   "schemaVersion": 36,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "confluence"
+  ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "default",
+          "value": "default"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Cache clearing",
-  "uid": "bi4AbQtna",
-  "version": 2,
+  "title": "Confluence Cache Clearing",
+  "version": 1,
   "weekStart": ""
 }
