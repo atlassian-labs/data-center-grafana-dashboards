@@ -108,7 +108,7 @@
           "exemplar": true,
           "expr": "topk(5, (sum without (instance) (com_atlassian_confluence_metrics_Mean{category00=\"search\", name=\"manager\"}) / sum without (instance) (com_atlassian_confluence_metrics_Count{category00=\"search\", name=\"manager\"})*1000))",
           "interval": "",
-          "legendFormat": "{{tag_invokerPluginKey}}",
+          "legendFormat": "{{ instance }} {{tag_invokerPluginKey}}",
           "refId": "A"
         }
       ],
@@ -195,7 +195,7 @@
           "exemplar": true,
           "expr": "topk(5, (com_atlassian_confluence_metrics_99thPercentile{category00=\"search\", name=\"manager\"}))",
           "interval": "",
-          "legendFormat": "{{tag_invokerPluginKey}}",
+          "legendFormat": "{{ instance }} {{tag_invokerPluginKey}}",
           "refId": "A"
         }
       ],
@@ -282,7 +282,7 @@
           "exemplar": true,
           "expr": "topk(5, (sum without (instance) (com_atlassian_confluence_metrics_Mean{category00=\"index\", name=\"reindex\"}) / sum without (instance) (com_atlassian_confluence_metrics_Count{category00=\"index\", name=\"reindex\"})*1000))",
           "interval": "",
-          "legendFormat": "{{tag_invokerPluginKey}}",
+          "legendFormat": "{{ instance }} {{tag_invokerPluginKey}}",
           "refId": "A"
         }
       ],
@@ -369,7 +369,7 @@
           "exemplar": true,
           "expr": "topk(5, (com_atlassian_confluence_metrics_99thPercentile{category00=\"index\", name=\"reindex\"}))",
           "interval": "",
-          "legendFormat": "{{tag_invokerPluginKey}}",
+          "legendFormat": "{{ instance }} {{tag_invokerPluginKey}}",
           "refId": "A"
         }
       ],
@@ -456,7 +456,7 @@
           "exemplar": true,
           "expr": "topk(5, (sum without (instance) (com_atlassian_confluence_metrics_Mean{name=\"longRunningTask\"}) / sum without (instance) (com_atlassian_confluence_metrics_Count{name=\"longRunningTask\"})*1000))",
           "interval": "",
-          "legendFormat": "{{tag_taskClass}}",
+          "legendFormat": "{{ instance }} {{tag_taskClass}}",
           "refId": "A"
         }
       ],
@@ -543,7 +543,7 @@
           "exemplar": true,
           "expr": "topk(5, (com_atlassian_confluence_metrics_99thPercentile{name=\"longRunningTask\"}))",
           "interval": "",
-          "legendFormat": "{{tag_taskClass}}",
+          "legendFormat": "{{ instance }} {{tag_taskClass}}",
           "refId": "A"
         }
       ],
