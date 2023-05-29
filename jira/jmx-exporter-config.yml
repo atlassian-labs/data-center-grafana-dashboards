@@ -1,0 +1,22 @@
+---
+startDelaySeconds: 0
+
+rules:
+  - pattern: '(java.lang)<type=(\w+)><>(\w+):'
+    name: java_lang_$2_$3
+    labels:
+      product: "jira"
+  - pattern: 'java.lang<type=Memory><HeapMemoryUsage>(\w+)'
+    name: java_lang_Memory_HeapMemoryUsage_$1
+    labels:
+      product: "jira"
+  - pattern: 'java.lang<name=G1 (\w+) Generation, type=GarbageCollector><>(\w+)'
+    name: java_lang_G1_$1_Generation_$2
+    labels:
+      product: "jira"
+  - pattern: '.*'
+
+# Prevents https://jira.atlassian.com/browse/JRASERVER-72688
+blacklistObjectNames:
+  - 'com.atlassian.jira:connectionpool=connections,connection=*,name=BasicDataSource'
+
