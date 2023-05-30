@@ -1003,7 +1003,7 @@
   "schemaVersion": 38,
   "style": "dark",
   "tags": [
-    "bitbucket"
+    "bitbucket-mesh"
   ],
   "templating": {
     "list": [
