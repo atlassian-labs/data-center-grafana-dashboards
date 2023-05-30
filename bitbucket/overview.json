@@ -1279,7 +1279,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "com_zaxxer_hikari_Pool_bitbucket_ThreadsAwaitingConnection",
+          "expr": "com_zaxxer_hikari_Pool_bitbucket_ThreadsAwaitingConnection{}",
           "hide": false,
           "legendFormat": "awaiting ({{ instance }})",
           "range": true,

@@ -975,7 +975,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "com_zaxxer_hikari_Pool_bitbucket_mesh_ThreadsAwaitingConnection",
+          "expr": "com_zaxxer_hikari_Pool_bitbucket_mesh_ThreadsAwaitingConnection{}",
           "hide": false,
           "legendFormat": "awaiting ({{ instance }})",
           "range": true,
