@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 218,
+  "id": 224,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -455,8 +455,8 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
+            "fillOpacity": 16,
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -468,7 +468,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -516,6 +516,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -523,8 +524,8 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(com_atlassian_bitbucket_Repositories_Count{namespace=\"yivantsov\"})",
-          "legendFormat": "__auto",
+          "expr": "topk(1, com_atlassian_bitbucket_Repositories_Count{})",
+          "legendFormat": "Repositories",
           "range": true,
           "refId": "A"
         }
@@ -593,7 +594,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 14,
         "w": 7,
         "x": 17,
         "y": 0
@@ -704,7 +705,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
+        "h": 7,
         "w": 6,
         "x": 0,
         "y": 7
@@ -809,8 +810,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
-        "w": 6,
+        "h": 7,
+        "w": 11,
         "x": 6,
         "y": 7
       },
@@ -849,6 +850,114 @@
         }
       ],
       "title": "Heap Used %",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 11,
+        "x": 0,
+        "y": 14
+      },
+      "id": 34,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "increase(java_lang_G1_Old_Generation_CollectionCount{}[10m])",
+          "format": "time_series",
+          "hide": false,
+          "interval": "1m",
+          "legendFormat": "G1_Old_Generation ({{ instance }})",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "$datasource"
+          },
+          "exemplar": true,
+          "expr": "increase(java_lang_G1_Young_Generation_CollectionCount{}[10m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "G1_Young_Generation ({{ instance }})",
+          "refId": "B"
+        }
+      ],
+      "title": "GC Count",
       "type": "timeseries"
     },
     {
@@ -914,10 +1023,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 7
+        "h": 8,
+        "w": 13,
+        "x": 11,
+        "y": 14
       },
       "id": 33,
       "options": {
@@ -960,114 +1069,6 @@
         }
       ],
       "title": "GC Time",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "$datasource"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 5,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 60
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 12,
-        "x": 12,
-        "y": 14
-      },
-      "id": 34,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "increase(java_lang_G1_Old_Generation_CollectionCount{}[10m])",
-          "format": "time_series",
-          "hide": false,
-          "interval": "1m",
-          "legendFormat": "G1_Old_Generation ({{ instance }})",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "increase(java_lang_G1_Young_Generation_CollectionCount{}[10m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "G1_Young_Generation ({{ instance }})",
-          "refId": "B"
-        }
-      ],
-      "title": "GC Count",
       "type": "timeseries"
     },
     {
@@ -1136,7 +1137,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 22
       },
       "id": 25,
       "options": {
@@ -1233,7 +1234,7 @@
         "h": 11,
         "w": 9,
         "x": 0,
-        "y": 34
+        "y": 32
       },
       "id": 38,
       "options": {
@@ -1256,7 +1257,7 @@
           },
           "editorMode": "code",
           "expr": "com_zaxxer_hikari_Pool_bitbucket_IdleConnections{}",
-          "legendFormat": "idle ({{instance}})",
+          "legendFormat": "idle ({{ instance }})",
           "range": true,
           "refId": "A"
         },
@@ -1268,7 +1269,7 @@
           "editorMode": "code",
           "expr": "com_zaxxer_hikari_Pool_bitbucket_ActiveConnections{}",
           "hide": false,
-          "legendFormat": "active ({{instance}})",
+          "legendFormat": "active ({{ instance }})",
           "range": true,
           "refId": "B"
         },
@@ -1280,7 +1281,7 @@
           "editorMode": "code",
           "expr": "com_zaxxer_hikari_Pool_bitbucket_ThreadsAwaitingConnection",
           "hide": false,
-          "legendFormat": "awaiting ({{instance}})",
+          "legendFormat": "awaiting ({{ instance }})",
           "range": true,
           "refId": "C"
         },
@@ -1290,9 +1291,9 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "com_zaxxer_hikari_Pool_bitbucket_TotalConnections",
+          "expr": "com_zaxxer_hikari_Pool_bitbucket_TotalConnections{}",
           "hide": false,
-          "legendFormat": "total ({{instance}})",
+          "legendFormat": "total ({{ instance }})",
           "range": true,
           "refId": "D"
         }
@@ -1363,7 +1364,7 @@
         "h": 11,
         "w": 8,
         "x": 9,
-        "y": 34
+        "y": 32
       },
       "id": 36,
       "options": {
@@ -1473,7 +1474,7 @@
         "h": 11,
         "w": 7,
         "x": 17,
-        "y": 34
+        "y": 32
       },
       "id": 39,
       "options": {
@@ -1552,12 +1553,12 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Bitbucket Overview",
-  "version": 6,
+  "version": 1,
   "weekStart": ""
 }
