@@ -114,7 +114,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "metrics_throttling_Value{namespace=\"$namespace\", service=\"$service\", section=\"tickets\", throttledResource=\"scm-hosting\"}",
+          "expr": "metrics_throttling_Value{section=\"tickets\", throttledResource=\"scm-hosting\"}",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
@@ -212,11 +212,11 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "metrics_throttling_Value{namespace=\"$namespace\", service=\"$service\", section=\"tickets\", throttledResource=\"git-lfs\"}",
+          "expr": "metrics_throttling_Value{section=\"tickets\", throttledResource=\"git-lfs\"}",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
-          "legendFormat": "{{name}} ({{ pod }})",
+          "legendFormat": "{{name}} ({{ instance }})",
           "range": true,
           "refId": "A"
         }
@@ -310,11 +310,11 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "metrics_throttling_Value{namespace=\"$namespace\", service=\"$service\", section=\"tickets\", throttledResource=\"scm-refs\"}",
+          "expr": "metrics_throttling_Value{section=\"tickets\", throttledResource=\"scm-refs\"}",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
-          "legendFormat": "{{name}} ({{ pod }})",
+          "legendFormat": "{{name}} ({{ instance }})",
           "range": true,
           "refId": "A"
         }
@@ -408,11 +408,11 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "metrics_throttling_Value{namespace=\"$namespace\", service=\"$service\", section=\"tickets\", throttledResource=\"scm-command\"}",
+          "expr": "metrics_throttling_Value{section=\"tickets\", throttledResource=\"scm-command\"}",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
-          "legendFormat": "{{name}} ({{ pod }})",
+          "legendFormat": "{{name}} ({{ instance }})",
           "range": true,
           "refId": "A"
         }
@@ -506,11 +506,11 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "metrics_throttling_Value{namespace=\"$namespace\", service=\"$service\", section=\"tickets\" ,name=\"available\"}",
+          "expr": "metrics_throttling_Value{section=\"tickets\" ,name=\"available\"}",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
-          "legendFormat": "{{throttledResource}} ({{ pod }})",
+          "legendFormat": "{{throttledResource}} ({{ instance }})",
           "range": true,
           "refId": "A"
         }
@@ -604,11 +604,11 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "metrics_throttling_Value{namespace=\"$namespace\", service=\"$service\", section=\"tickets\" ,name=\"used\"}",
+          "expr": "metrics_throttling_Value{section=\"tickets\" ,name=\"used\"}",
           "format": "time_series",
           "hide": false,
           "interval": "1m",
-          "legendFormat": "{{throttledResource}} ({{ pod }})",
+          "legendFormat": "{{throttledResource}} ({{ instance }})",
           "range": true,
           "refId": "A"
         }
@@ -644,58 +644,6 @@
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "drathbone",
-          "value": "drathbone"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "$datasource"
-        },
-        "definition": "metrics_grpc_Value",
-        "hide": 0,
-        "includeAll": false,
-        "multi": false,
-        "name": "namespace",
-        "options": [],
-        "query": {
-          "query": "metrics_grpc_Value",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "/namespace=\"([^\"]*)\"/",
-        "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
-      },
-      {
-        "current": {
-          "selected": true,
-          "text": "bitbucket-jmx",
-          "value": "bitbucket-jmx"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "$datasource"
-        },
-        "definition": "metrics_grpc_Value",
-        "hide": 0,
-        "includeAll": false,
-        "multi": false,
-        "name": "service",
-        "options": [],
-        "query": {
-          "query": "metrics_grpc_Value",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "/service=\"([^\"]*)\"/",
-        "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
       }
     ]
   },
