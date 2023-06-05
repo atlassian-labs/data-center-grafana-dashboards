@@ -20,7 +20,7 @@ You'll also need a running instance of Prometheus and Grafana. Details for setup
 
 ## Contributions
 
-Contributions to Confluence DC Grafana Dashabords are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Contributions to Confluence DC Grafana Dashboards are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## License
 
