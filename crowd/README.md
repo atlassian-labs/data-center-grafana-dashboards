@@ -1,4 +1,4 @@
-# Crowd server DC Grafana Dashabords
+# Crowd DC Grafana Dashabords
 [![Atlassian license](https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat-square)](LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 
 ## Overview
@@ -15,7 +15,7 @@ You'll also need a running instance of Prometheus and Grafana. Details for setup
 
 ## Contributions
 
-Contributions to Crowd server DC Grafana Dashboards are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Contributions to Crowd DC Grafana Dashboards are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## License
 
