@@ -1465,8 +1465,8 @@
             "uid": "prometheus"
           },
           "editorMode": "builder",
-          "expr": "com_mchange_v2_c3p0_PooledDataSource_numBusyConnections",
-          "legendFormat": "__auto",
+          "expr": "com_mchange_v2_c3p0_PooledDataSource_numBusyConnections{}",
+          "legendFormat": "busy ({{instance}})",
           "range": true,
           "refId": "A"
         },
@@ -1476,9 +1476,9 @@
             "uid": "prometheus"
           },
           "editorMode": "builder",
-          "expr": "com_mchange_v2_c3p0_PooledDataSource_numConnections",
+          "expr": "com_mchange_v2_c3p0_PooledDataSource_numConnections{}",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "total ({{instance}})",
           "range": true,
           "refId": "B"
         }
@@ -1572,8 +1572,8 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "com_mchange_v2_c3p0_PooledDataSource_numBusyConnections",
-          "legendFormat": "{{instance}}",
+          "expr": "com_mchange_v2_c3p0_PooledDataSource_numBusyConnections{}",
+          "legendFormat": "busy {{instance}}",
           "range": true,
           "refId": "A"
         },
@@ -1583,9 +1583,9 @@
             "uid": "${datasource}"
           },
           "editorMode": "builder",
-          "expr": "com_mchange_v2_c3p0_PooledDataSource_maxPoolSize",
+          "expr": "com_mchange_v2_c3p0_PooledDataSource_maxPoolSize{}",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "maxPoolSize ({{instance}})",
           "range": true,
           "refId": "B"
         }
@@ -1679,7 +1679,7 @@
           },
           "editorMode": "code",
           "expr": "com_mchange_v2_c3p0_PooledDataSource_numIdleConnections{}",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "idle {{instance}}",
           "range": true,
           "refId": "A"
         }
