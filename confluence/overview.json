@@ -740,7 +740,7 @@
             "uid": "$datasource"
           },
           "exemplar": true,
-          "expr": "100*(jvm_memory_bytes_used{area=\"heap\",product=\"confluence\"}/jvm_memory_bytes_max{area=\"heap\",product=\"confluence\"})",
+          "expr": "100*(jvm_memory_bytes_used{area=\"heap\"}/jvm_memory_bytes_max{area=\"heap\"})",
           "interval": "",
           "legendFormat": "Used {{ area }} ({{instance}})",
           "refId": "A"
@@ -841,7 +841,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "com_atlassian_confluence_metrics_Mean{category00=\"jvm\", category01=\"gc\", product=\"confluence\"}",
+          "expr": "com_atlassian_confluence_metrics_Mean{category00=\"jvm\", category01=\"gc\"}",
           "legendFormat": "{{instance}} - {{tag_cause}}",
           "range": true,
           "refId": "A"
