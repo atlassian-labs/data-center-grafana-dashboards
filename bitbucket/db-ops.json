@@ -31,7 +31,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Active Connections (in use)",
       "fieldConfig": {
@@ -111,7 +111,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_zaxxer_hikari_Pool_bitbucket_ActiveConnections{}[5m])",
@@ -126,7 +126,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Idle Connection count",
       "fieldConfig": {
@@ -206,7 +206,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_zaxxer_hikari_Pool_bitbucket_IdleConnections{}[5m])",
@@ -221,7 +221,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "The number of threads waiting for a connection (when all available connections are in use)",
       "fieldConfig": {
@@ -301,7 +301,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_zaxxer_hikari_Pool_bitbucket_ThreadsAwaitingConnection{}[5m])",
@@ -316,7 +316,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Total Connections",
       "fieldConfig": {
@@ -396,7 +396,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_zaxxer_hikari_Pool_bitbucket_TotalConnections{}[5m])",
@@ -411,7 +411,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Global number of cached queries successfully retrieved from cache",
       "fieldConfig": {
@@ -491,7 +491,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(org_hibernate_core_bitbucket_core_QueryCacheHitCount{}[5m])",
@@ -506,7 +506,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Global number of cacheable entities/collections successfully retrieved from the cache",
       "fieldConfig": {
@@ -586,7 +586,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(org_hibernate_core_bitbucket_core_SecondLevelCacheHitCount{}[5m])",
@@ -602,7 +602,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Global number of cached queries not found in cache",
       "fieldConfig": {
@@ -682,7 +682,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(org_hibernate_core_bitbucket_core_QueryCacheMissCount{}[5m])",
@@ -697,7 +697,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Global number of cacheable entities/collections not found in the cache and loaded from the database",
       "fieldConfig": {
@@ -777,7 +777,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(org_hibernate_core_bitbucket_core_SecondLevelCacheMissCount{}[5m])",

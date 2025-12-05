@@ -32,7 +32,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "A count of the total number of events that could trigger webhooks\n(A publish may create many dispatches)",
       "fieldConfig": {
@@ -112,7 +112,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_atlassian_webhooks_Webhooks_PublishCount{}[5m])",
@@ -127,7 +127,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Total number of webhooks to fire successfully with a successful HTTP response(A publish may create many dispatches)",
       "fieldConfig": {
@@ -207,7 +207,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_atlassian_webhooks_Webhooks_DispatchSuccessCount{}[5m])",
@@ -222,7 +222,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "A count of the number of webhook dispatches that were rejected for execution",
       "fieldConfig": {
@@ -302,7 +302,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_atlassian_webhooks_Webhooks_DispatchRejectedCount{}[5m])",
@@ -317,7 +317,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "The last time a webhook was rejected, either from circuit breaking, or due to too many webhooks being in flight",
       "fieldConfig": {
@@ -397,7 +397,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_atlassian_webhooks_Webhooks_DispatchLastRejectedTimestamp{}[5m])",
@@ -412,7 +412,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Total number of dispatches that have been triggered and are awaiting resolution",
       "fieldConfig": {
@@ -492,7 +492,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_atlassian_webhooks_Webhooks_DispatchInFlightCount{}[5m])",
@@ -507,7 +507,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Total number of webhooks that fired successfully, but the HTTP response indicates a failure\n(non 2xx code)",
       "fieldConfig": {
@@ -587,7 +587,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_atlassian_webhooks_Webhooks_DispatchFailureCount{}[5m])",
@@ -602,7 +602,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Total number of webhooks to have had an error while they were being dispatched(non 2xx code)",
       "fieldConfig": {
@@ -682,7 +682,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_atlassian_webhooks_Webhooks_DispatchErrorCount{}[5m])",
@@ -697,7 +697,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "description": "Total number of webhooks to have been dispatched",
       "fieldConfig": {
@@ -777,7 +777,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "increase(com_atlassian_webhooks_Webhooks_DispatchCount{}[5m])",
